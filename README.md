@@ -21,7 +21,7 @@ The modern game with pegs was invented in 1970 by Mordecai Meirowitz, an Israeli
 ### QuickSpell
 <img src="/img/QuickSpell-logo-512.png" alt="Application Icon" style="width:128px;height:128px;">
 
-<u>**Description:**</u> A word game I found on Paul Hudson's ([@twostraws](https://twitter.com/twostraws)) HWS+. I have taken his project and added features I thought would make the game more fun and challenging.
+__**Description:**__ A word game I found on Paul Hudson's ([@twostraws](https://twitter.com/twostraws)) HWS+. I have taken his project and added features I thought would make the game more fun and challenging.
 
 ***
 
