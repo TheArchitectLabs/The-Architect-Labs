@@ -8,7 +8,7 @@
 ### Mastermind
 <img src="/img/MasterMind-logo-512.png" alt="Application Icon" style="width:128px;height:128px;">
 
-<u>**Description:**</u> The first game I always try to create when learning a new programming language. It has logic and design at it's forefront and is always a challenging build.
+**<u>Description:</u>** The first game I always try to create when learning a new programming language. It has logic and design at it's forefront and is always a challenging build.
 
 <u>**History:**</u> The game is based on an older, paper based game called Bulls and Cows. A computer adaptation of it was run in the 1960s on Cambridge University’s Titan computer system, where it was called 'MOO'. This version was written by Frank King. There was also another version for the TSS/8 time sharing system, written by J.S. Felton and finally a version for the Multics system at MIT by Jerrold Grochow.
 
