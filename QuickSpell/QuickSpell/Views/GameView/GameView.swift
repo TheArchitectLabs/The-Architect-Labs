@@ -12,10 +12,11 @@ struct GameView: View {
     // MARK: - PROPERTIES
     @AppStorage("highScore") var highScore = 0
     @AppStorage("clockTime") var defaultClockTime = 30
+    @AppStorage("gameState") var gameState: GameState = .loading
     @Namespace private var animation
     
     // Global Variables
-    @State private var gameState: GameState = .loading
+    //@State private var gameState: GameState = .loading
     
     @State private var dictionary = Set<String>()
     @State private var unusedLetters = [Letter]()
@@ -253,11 +254,11 @@ struct GameView: View {
                 }),
                       secondaryButton: .cancel(Text("I need a break! 😴 🧃 🥨"), action: {
                     resetGame()
-                    resetBonus()
+                    bonusTimeRemaining = 0
                 }))
             }
             .sheet(isPresented: $isSettingsPresented) {
-                resume()
+                // do nothing
             } content: {
                 SettingsView()
             }
@@ -316,13 +317,17 @@ extension GameView {
         
         // Set State
         gameState = .paused
-        isGamePaused = true
         
         // Stop the Timers
         gameTimer.upstream.connect().cancel()
         if bonusTimeRemaining > 0 {
             bonusTimer.upstream.connect().cancel()
         }
+        
+        // Stop Any Sounds From Playing
+        SoundManager.instance.stopSound()
+        
+        isGamePaused = true
     }
     
     // Resumes the Game
@@ -330,7 +335,6 @@ extension GameView {
         
         // Set State
         gameState = .playing
-        isGamePaused = false
         
         // Restart the Timers
         gameTimer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
@@ -338,6 +342,7 @@ extension GameView {
             bonusTimer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
         }
         
+        isGamePaused = false
     }
     
     func stop() {
@@ -345,6 +350,8 @@ extension GameView {
         // Set State
         gameState = .ended
         isGameOver = true
+        isBonusOn = false
+        showBonusTask = false
         
         // Stop Any Sounds From Playing
         SoundManager.instance.stopSound()

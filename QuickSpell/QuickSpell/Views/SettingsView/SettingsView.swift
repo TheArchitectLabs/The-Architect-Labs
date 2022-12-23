@@ -11,7 +11,7 @@ struct SettingsView: View {
     
     // MARK: - PROPERTIES
     @Environment(\.dismiss) private var dismiss
-    @AppStorage("clockTime") var defaultClockTime: Int = 30
+    @AppStorage("clockTime") var defaultClockTime: Int = 60
     @AppStorage("highScore") var highScore: Int = 0
     
     var clockTimes: [Int] = [30,60,90]
@@ -21,16 +21,15 @@ struct SettingsView: View {
         VStack {
             Form {
                 Section {
-                    Picker(selection: $defaultClockTime) {
+                    Picker("Clock Time Setting", selection: $defaultClockTime) {
                         ForEach(clockTimes, id: \.self) { time in
                             Text("\(time)")
                         }
-                    } label: {
-                        Text("Select your default start time:")
                     }
+                    .pickerStyle(.segmented)
                     
                 } header: {
-                    Text("Game Settings")
+                    Text("What do you want the starting time to be?")
                 }
                 
                 Section {
