@@ -7,22 +7,50 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C3EECBDA2953334700884A61 /* QuickSpellApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3EECBD92953334700884A61 /* QuickSpellApp.swift */; };
-		C3EECBDC2953334700884A61 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3EECBDB2953334700884A61 /* ContentView.swift */; };
-		C3EECBDE2953334900884A61 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C3EECBDD2953334900884A61 /* Assets.xcassets */; };
-		C3EECBE12953334900884A61 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C3EECBE02953334900884A61 /* Preview Assets.xcassets */; };
+		C30BC2322955E7E200F6AD12 /* BonusType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30BC2302955E7E200F6AD12 /* BonusType.swift */; };
+		C30BC2332955E7E200F6AD12 /* GameState.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30BC2312955E7E200F6AD12 /* GameState.swift */; };
+		C30BC2352955E7F200F6AD12 /* wordlist.txt in Resources */ = {isa = PBXBuildFile; fileRef = C30BC2342955E7F200F6AD12 /* wordlist.txt */; };
+		C30BC2392955E80700F6AD12 /* hiscore.wav in Resources */ = {isa = PBXBuildFile; fileRef = C30BC2362955E80700F6AD12 /* hiscore.wav */; };
+		C30BC23A2955E80700F6AD12 /* win.wav in Resources */ = {isa = PBXBuildFile; fileRef = C30BC2372955E80700F6AD12 /* win.wav */; };
+		C30BC23B2955E80700F6AD12 /* clock.wav in Resources */ = {isa = PBXBuildFile; fileRef = C30BC2382955E80700F6AD12 /* clock.wav */; };
+		C30BC23D2955E81A00F6AD12 /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30BC23C2955E81A00F6AD12 /* SoundManager.swift */; };
+		C30BC2402955E82E00F6AD12 /* Bonus.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30BC23E2955E82E00F6AD12 /* Bonus.swift */; };
+		C30BC2412955E82E00F6AD12 /* Letter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30BC23F2955E82E00F6AD12 /* Letter.swift */; };
+		C30BC2432955E84F00F6AD12 /* QuickSpellApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30BC2422955E84F00F6AD12 /* QuickSpellApp.swift */; };
+		C30BC2452955E86200F6AD12 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30BC2442955E86200F6AD12 /* GameView.swift */; };
+		C30BC24A2955E87B00F6AD12 /* LetterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30BC2462955E87B00F6AD12 /* LetterView.swift */; };
+		C30BC24B2955E87B00F6AD12 /* LogoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30BC2472955E87B00F6AD12 /* LogoView.swift */; };
+		C30BC24C2955E87B00F6AD12 /* AnimatingNumberView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30BC2482955E87B00F6AD12 /* AnimatingNumberView.swift */; };
+		C30BC24D2955E87B00F6AD12 /* BonusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30BC2492955E87B00F6AD12 /* BonusView.swift */; };
+		C30BC24F2955E88D00F6AD12 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30BC24E2955E88D00F6AD12 /* SettingsView.swift */; };
+		C39E5A6C291E70E60078F7FB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C39E5A6B291E70E60078F7FB /* Assets.xcassets */; };
+		C39E5A6F291E70E60078F7FB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C39E5A6E291E70E60078F7FB /* Preview Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		C3EECBD62953334700884A61 /* QuickSpell.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QuickSpell.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		C3EECBD92953334700884A61 /* QuickSpellApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickSpellApp.swift; sourceTree = "<group>"; };
-		C3EECBDB2953334700884A61 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		C3EECBDD2953334900884A61 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		C3EECBE02953334900884A61 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		C30BC2302955E7E200F6AD12 /* BonusType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BonusType.swift; sourceTree = "<group>"; };
+		C30BC2312955E7E200F6AD12 /* GameState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameState.swift; sourceTree = "<group>"; };
+		C30BC2342955E7F200F6AD12 /* wordlist.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = wordlist.txt; sourceTree = "<group>"; };
+		C30BC2362955E80700F6AD12 /* hiscore.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = hiscore.wav; sourceTree = "<group>"; };
+		C30BC2372955E80700F6AD12 /* win.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = win.wav; sourceTree = "<group>"; };
+		C30BC2382955E80700F6AD12 /* clock.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = clock.wav; sourceTree = "<group>"; };
+		C30BC23C2955E81A00F6AD12 /* SoundManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoundManager.swift; sourceTree = "<group>"; };
+		C30BC23E2955E82E00F6AD12 /* Bonus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bonus.swift; sourceTree = "<group>"; };
+		C30BC23F2955E82E00F6AD12 /* Letter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Letter.swift; sourceTree = "<group>"; };
+		C30BC2422955E84F00F6AD12 /* QuickSpellApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuickSpellApp.swift; sourceTree = "<group>"; };
+		C30BC2442955E86200F6AD12 /* GameView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
+		C30BC2462955E87B00F6AD12 /* LetterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LetterView.swift; sourceTree = "<group>"; };
+		C30BC2472955E87B00F6AD12 /* LogoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogoView.swift; sourceTree = "<group>"; };
+		C30BC2482955E87B00F6AD12 /* AnimatingNumberView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimatingNumberView.swift; sourceTree = "<group>"; };
+		C30BC2492955E87B00F6AD12 /* BonusView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BonusView.swift; sourceTree = "<group>"; };
+		C30BC24E2955E88D00F6AD12 /* SettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		C39E5A64291E70E50078F7FB /* QuickSpell.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QuickSpell.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C39E5A6B291E70E60078F7FB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C39E5A6E291E70E60078F7FB /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		C3EECBD32953334700884A61 /* Frameworks */ = {
+		C39E5A61291E70E50078F7FB /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -32,51 +60,145 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		C3EECBCD2953334700884A61 = {
+		C39E5A5B291E70E50078F7FB = {
 			isa = PBXGroup;
 			children = (
-				C3EECBD82953334700884A61 /* QuickSpell */,
-				C3EECBD72953334700884A61 /* Products */,
+				C39E5A66291E70E50078F7FB /* QuickSpell */,
+				C39E5A65291E70E50078F7FB /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		C3EECBD72953334700884A61 /* Products */ = {
+		C39E5A65291E70E50078F7FB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				C3EECBD62953334700884A61 /* QuickSpell.app */,
+				C39E5A64291E70E50078F7FB /* QuickSpell.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		C3EECBD82953334700884A61 /* QuickSpell */ = {
+		C39E5A66291E70E50078F7FB /* QuickSpell */ = {
 			isa = PBXGroup;
 			children = (
-				C3EECBD92953334700884A61 /* QuickSpellApp.swift */,
-				C3EECBDB2953334700884A61 /* ContentView.swift */,
-				C3EECBDD2953334900884A61 /* Assets.xcassets */,
-				C3EECBDF2953334900884A61 /* Preview Content */,
+				C39E5A7B291E75F60078F7FB /* Helpers */,
+				C39E5A7C291E76080078F7FB /* Models */,
+				C39E5A7D291E76180078F7FB /* Views */,
+				C39E5A8C291EB5E90078F7FB /* Managers */,
+				C39E5A6B291E70E60078F7FB /* Assets.xcassets */,
+				C39E5A6D291E70E60078F7FB /* Preview Content */,
 			);
 			path = QuickSpell;
 			sourceTree = "<group>";
 		};
-		C3EECBDF2953334900884A61 /* Preview Content */ = {
+		C39E5A6D291E70E60078F7FB /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
-				C3EECBE02953334900884A61 /* Preview Assets.xcassets */,
+				C39E5A6E291E70E60078F7FB /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		C39E5A7B291E75F60078F7FB /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				C39E5AB0292A5E0B0078F7FB /* Enumerations */,
+				C39E5A8D291EBB700078F7FB /* Files */,
+				C39E5A89291E9B7D0078F7FB /* Sounds */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		C39E5A7C291E76080078F7FB /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				C30BC23E2955E82E00F6AD12 /* Bonus.swift */,
+				C30BC23F2955E82E00F6AD12 /* Letter.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		C39E5A7D291E76180078F7FB /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				C30BC2422955E84F00F6AD12 /* QuickSpellApp.swift */,
+				C39E5A94291EC1150078F7FB /* GameView */,
+				C39E5AAD292905D20078F7FB /* SettingsView */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		C39E5A80291E84C10078F7FB /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				C30BC2482955E87B00F6AD12 /* AnimatingNumberView.swift */,
+				C30BC2492955E87B00F6AD12 /* BonusView.swift */,
+				C30BC2462955E87B00F6AD12 /* LetterView.swift */,
+				C30BC2472955E87B00F6AD12 /* LogoView.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		C39E5A89291E9B7D0078F7FB /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				C30BC2382955E80700F6AD12 /* clock.wav */,
+				C30BC2362955E80700F6AD12 /* hiscore.wav */,
+				C30BC2372955E80700F6AD12 /* win.wav */,
+			);
+			path = Sounds;
+			sourceTree = "<group>";
+		};
+		C39E5A8C291EB5E90078F7FB /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				C30BC23C2955E81A00F6AD12 /* SoundManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		C39E5A8D291EBB700078F7FB /* Files */ = {
+			isa = PBXGroup;
+			children = (
+				C30BC2342955E7F200F6AD12 /* wordlist.txt */,
+			);
+			path = Files;
+			sourceTree = "<group>";
+		};
+		C39E5A94291EC1150078F7FB /* GameView */ = {
+			isa = PBXGroup;
+			children = (
+				C30BC2442955E86200F6AD12 /* GameView.swift */,
+				C39E5A80291E84C10078F7FB /* Components */,
+			);
+			path = GameView;
+			sourceTree = "<group>";
+		};
+		C39E5AAD292905D20078F7FB /* SettingsView */ = {
+			isa = PBXGroup;
+			children = (
+				C30BC24E2955E88D00F6AD12 /* SettingsView.swift */,
+			);
+			path = SettingsView;
+			sourceTree = "<group>";
+		};
+		C39E5AB0292A5E0B0078F7FB /* Enumerations */ = {
+			isa = PBXGroup;
+			children = (
+				C30BC2302955E7E200F6AD12 /* BonusType.swift */,
+				C30BC2312955E7E200F6AD12 /* GameState.swift */,
+			);
+			path = Enumerations;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		C3EECBD52953334700884A61 /* QuickSpell */ = {
+		C39E5A63291E70E50078F7FB /* QuickSpell */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C3EECBE42953334900884A61 /* Build configuration list for PBXNativeTarget "QuickSpell" */;
+			buildConfigurationList = C39E5A72291E70E60078F7FB /* Build configuration list for PBXNativeTarget "QuickSpell" */;
 			buildPhases = (
-				C3EECBD22953334700884A61 /* Sources */,
-				C3EECBD32953334700884A61 /* Frameworks */,
-				C3EECBD42953334700884A61 /* Resources */,
+				C39E5A60291E70E50078F7FB /* Sources */,
+				C39E5A61291E70E50078F7FB /* Frameworks */,
+				C39E5A62291E70E50078F7FB /* Resources */,
 			);
 			buildRules = (
 			);
@@ -84,25 +206,25 @@
 			);
 			name = QuickSpell;
 			productName = QuickSpell;
-			productReference = C3EECBD62953334700884A61 /* QuickSpell.app */;
+			productReference = C39E5A64291E70E50078F7FB /* QuickSpell.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		C3EECBCE2953334700884A61 /* Project object */ = {
+		C39E5A5C291E70E50078F7FB /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1420;
-				LastUpgradeCheck = 1420;
+				LastSwiftUpdateCheck = 1410;
+				LastUpgradeCheck = 1410;
 				TargetAttributes = {
-					C3EECBD52953334700884A61 = {
-						CreatedOnToolsVersion = 14.2;
+					C39E5A63291E70E50078F7FB = {
+						CreatedOnToolsVersion = 14.1;
 					};
 				};
 			};
-			buildConfigurationList = C3EECBD12953334700884A61 /* Build configuration list for PBXProject "QuickSpell" */;
+			buildConfigurationList = C39E5A5F291E70E50078F7FB /* Build configuration list for PBXProject "QuickSpell" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -110,42 +232,56 @@
 				en,
 				Base,
 			);
-			mainGroup = C3EECBCD2953334700884A61;
-			productRefGroup = C3EECBD72953334700884A61 /* Products */;
+			mainGroup = C39E5A5B291E70E50078F7FB;
+			productRefGroup = C39E5A65291E70E50078F7FB /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				C3EECBD52953334700884A61 /* QuickSpell */,
+				C39E5A63291E70E50078F7FB /* QuickSpell */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		C3EECBD42953334700884A61 /* Resources */ = {
+		C39E5A62291E70E50078F7FB /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C3EECBE12953334900884A61 /* Preview Assets.xcassets in Resources */,
-				C3EECBDE2953334900884A61 /* Assets.xcassets in Resources */,
+				C30BC2392955E80700F6AD12 /* hiscore.wav in Resources */,
+				C39E5A6F291E70E60078F7FB /* Preview Assets.xcassets in Resources */,
+				C39E5A6C291E70E60078F7FB /* Assets.xcassets in Resources */,
+				C30BC23B2955E80700F6AD12 /* clock.wav in Resources */,
+				C30BC23A2955E80700F6AD12 /* win.wav in Resources */,
+				C30BC2352955E7F200F6AD12 /* wordlist.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		C3EECBD22953334700884A61 /* Sources */ = {
+		C39E5A60291E70E50078F7FB /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C3EECBDC2953334700884A61 /* ContentView.swift in Sources */,
-				C3EECBDA2953334700884A61 /* QuickSpellApp.swift in Sources */,
+				C30BC24D2955E87B00F6AD12 /* BonusView.swift in Sources */,
+				C30BC2432955E84F00F6AD12 /* QuickSpellApp.swift in Sources */,
+				C30BC24A2955E87B00F6AD12 /* LetterView.swift in Sources */,
+				C30BC2402955E82E00F6AD12 /* Bonus.swift in Sources */,
+				C30BC2412955E82E00F6AD12 /* Letter.swift in Sources */,
+				C30BC2322955E7E200F6AD12 /* BonusType.swift in Sources */,
+				C30BC24B2955E87B00F6AD12 /* LogoView.swift in Sources */,
+				C30BC23D2955E81A00F6AD12 /* SoundManager.swift in Sources */,
+				C30BC2332955E7E200F6AD12 /* GameState.swift in Sources */,
+				C30BC24F2955E88D00F6AD12 /* SettingsView.swift in Sources */,
+				C30BC2452955E86200F6AD12 /* GameView.swift in Sources */,
+				C30BC24C2955E87B00F6AD12 /* AnimatingNumberView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		C3EECBE22953334900884A61 /* Debug */ = {
+		C39E5A70291E70E60078F7FB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -195,7 +331,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -205,7 +341,7 @@
 			};
 			name = Debug;
 		};
-		C3EECBE32953334900884A61 /* Release */ = {
+		C39E5A71291E70E60078F7FB /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -249,7 +385,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -259,7 +395,7 @@
 			};
 			name = Release;
 		};
-		C3EECBE52953334900884A61 /* Debug */ = {
+		C39E5A73291E70E60078F7FB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -273,8 +409,8 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -288,7 +424,7 @@
 			};
 			name = Debug;
 		};
-		C3EECBE62953334900884A61 /* Release */ = {
+		C39E5A74291E70E60078F7FB /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -302,8 +438,8 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -320,25 +456,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		C3EECBD12953334700884A61 /* Build configuration list for PBXProject "QuickSpell" */ = {
+		C39E5A5F291E70E50078F7FB /* Build configuration list for PBXProject "QuickSpell" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				C3EECBE22953334900884A61 /* Debug */,
-				C3EECBE32953334900884A61 /* Release */,
+				C39E5A70291E70E60078F7FB /* Debug */,
+				C39E5A71291E70E60078F7FB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C3EECBE42953334900884A61 /* Build configuration list for PBXNativeTarget "QuickSpell" */ = {
+		C39E5A72291E70E60078F7FB /* Build configuration list for PBXNativeTarget "QuickSpell" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				C3EECBE52953334900884A61 /* Debug */,
-				C3EECBE62953334900884A61 /* Release */,
+				C39E5A73291E70E60078F7FB /* Debug */,
+				C39E5A74291E70E60078F7FB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = C3EECBCE2953334700884A61 /* Project object */;
+	rootObject = C39E5A5C291E70E50078F7FB /* Project object */;
 }
