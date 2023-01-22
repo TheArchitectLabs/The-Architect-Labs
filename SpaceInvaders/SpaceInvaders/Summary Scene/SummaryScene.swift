@@ -120,6 +120,7 @@ class SummaryScene: SKScene {
         bonus = Int(accuracy) * 10
         score1 += bonus
         if score1 > hiscore {
+            hiscore = score1
             UserDefaults.standard.set(score1, forKey: k.hiScore)
         }
         UserDefaults.standard.set(score1, forKey: k.score)

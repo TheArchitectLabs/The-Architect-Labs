@@ -31,13 +31,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             UserDefaults.standard.set(score1, forKey: k.score)
             if score1 > hiscore {
                 hiscore = score1
+                UserDefaults.standard.set(score1, forKey: k.hiScore)
             }
         }
     }
     var hiscore: Int = 0 {
         didSet {
             hiScoreLabel.text = String(format: "%04d", hiscore)
-            UserDefaults.standard.set(score1, forKey: "hiscore")
+            UserDefaults.standard.set(score1, forKey: k.hiScore)
         }
     }
     var lives: Int = 0 {
