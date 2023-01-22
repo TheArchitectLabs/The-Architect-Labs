@@ -11,9 +11,11 @@ class OpeningScene: SKScene {
     
     let highScoreLabel = SKLabelNode(fontNamed: k.font)
     let startButton = SKLabelNode(fontNamed: k.fontBold)
+    let resetLabel = SKLabelNode(fontNamed: k.font)
     var highScore: Int = 0 {
         didSet {
             highScoreLabel.text = String(format: "%04d", highScore)
+            UserDefaults.standard.set(0, forKey: k.hiScore)
         }
     }
     
@@ -30,6 +32,13 @@ class OpeningScene: SKScene {
         highScoreLabel.name = "hiscore"
         highScoreLabel.text = "0000"
         addChild(highScoreLabel)
+        
+        resetLabel.position = CGPoint(x: frame.width - 100, y: 100)
+        resetLabel.zPosition = 1
+        resetLabel.fontSize = 18
+        resetLabel.name = "reset"
+        resetLabel.text = "RESET HI-SCORE"
+        addChild(resetLabel)
         
         highScore = UserDefaults.standard.integer(forKey: k.hiScore)
     }
@@ -54,6 +63,9 @@ class OpeningScene: SKScene {
                 let transition = SKTransition.fade(withDuration: 1)
                 view?.presentScene(nextScene, transition: transition)
             }
+        } else if tapped.name == "reset" {
+            // Reset the Hi-Score value
+            highScore = 0
         } else {
             return
         }
