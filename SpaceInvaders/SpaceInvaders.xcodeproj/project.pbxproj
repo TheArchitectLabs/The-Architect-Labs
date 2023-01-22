@@ -19,6 +19,22 @@
 		C30BC3AE2961C05000F6AD12 /* ShipHit.wav in Resources */ = {isa = PBXBuildFile; fileRef = C30BC3AA2961C05000F6AD12 /* ShipHit.wav */; };
 		C30BC3AF2961C05000F6AD12 /* InvaderHit.wav in Resources */ = {isa = PBXBuildFile; fileRef = C30BC3AB2961C05000F6AD12 /* InvaderHit.wav */; };
 		C30BC3B12961C07A00F6AD12 /* AssetLicensingNotes.txt in Resources */ = {isa = PBXBuildFile; fileRef = C30BC3B02961C07A00F6AD12 /* AssetLicensingNotes.txt */; };
+		C30BC3B32961C31000F6AD12 /* SpaceDust.sks in Resources */ = {isa = PBXBuildFile; fileRef = C30BC3B22961C31000F6AD12 /* SpaceDust.sks */; };
+		C30BC3B72971A3C100F6AD12 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30BC3B62971A3C100F6AD12 /* Constants.swift */; };
+		C30BC3BB2972DDCD00F6AD12 /* Explosion.sks in Resources */ = {isa = PBXBuildFile; fileRef = C30BC3BA2972DDCD00F6AD12 /* Explosion.sks */; };
+		C30BC3C429732DFB00F6AD12 /* fastinvader3.wav in Resources */ = {isa = PBXBuildFile; fileRef = C30BC3BC29732DFA00F6AD12 /* fastinvader3.wav */; };
+		C30BC3C529732DFB00F6AD12 /* invaderkilled.wav in Resources */ = {isa = PBXBuildFile; fileRef = C30BC3BD29732DFA00F6AD12 /* invaderkilled.wav */; };
+		C30BC3C629732DFB00F6AD12 /* explosion.wav in Resources */ = {isa = PBXBuildFile; fileRef = C30BC3BE29732DFA00F6AD12 /* explosion.wav */; };
+		C30BC3C729732DFB00F6AD12 /* fastinvader1.wav in Resources */ = {isa = PBXBuildFile; fileRef = C30BC3BF29732DFA00F6AD12 /* fastinvader1.wav */; };
+		C30BC3C829732DFB00F6AD12 /* fastinvader4.wav in Resources */ = {isa = PBXBuildFile; fileRef = C30BC3C029732DFB00F6AD12 /* fastinvader4.wav */; };
+		C30BC3C929732DFB00F6AD12 /* ufo_highpitch.wav in Resources */ = {isa = PBXBuildFile; fileRef = C30BC3C129732DFB00F6AD12 /* ufo_highpitch.wav */; };
+		C30BC3CA29732DFB00F6AD12 /* ufo_lowpitch.wav in Resources */ = {isa = PBXBuildFile; fileRef = C30BC3C229732DFB00F6AD12 /* ufo_lowpitch.wav */; };
+		C30BC3CB29732DFB00F6AD12 /* fastinvader2.wav in Resources */ = {isa = PBXBuildFile; fileRef = C30BC3C329732DFB00F6AD12 /* fastinvader2.wav */; };
+		C30BC3D12975839800F6AD12 /* OpeningScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = C30BC3D02975839800F6AD12 /* OpeningScene.sks */; };
+		C30BC3D32975840A00F6AD12 /* OpeningScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30BC3D22975840A00F6AD12 /* OpeningScene.swift */; };
+		C30BC3D72978B51100F6AD12 /* SummaryScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = C30BC3D62978B51100F6AD12 /* SummaryScene.sks */; };
+		C30BC3DA2978B52D00F6AD12 /* SummaryScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30BC3D92978B52D00F6AD12 /* SummaryScene.swift */; };
+		C30BC3DC297B1D7800F6AD12 /* Enumerations.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30BC3DB297B1D7800F6AD12 /* Enumerations.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +51,22 @@
 		C30BC3AA2961C05000F6AD12 /* ShipHit.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = ShipHit.wav; sourceTree = "<group>"; };
 		C30BC3AB2961C05000F6AD12 /* InvaderHit.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = InvaderHit.wav; sourceTree = "<group>"; };
 		C30BC3B02961C07A00F6AD12 /* AssetLicensingNotes.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AssetLicensingNotes.txt; sourceTree = "<group>"; };
+		C30BC3B22961C31000F6AD12 /* SpaceDust.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = SpaceDust.sks; sourceTree = "<group>"; };
+		C30BC3B62971A3C100F6AD12 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		C30BC3BA2972DDCD00F6AD12 /* Explosion.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Explosion.sks; sourceTree = "<group>"; };
+		C30BC3BC29732DFA00F6AD12 /* fastinvader3.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = fastinvader3.wav; sourceTree = "<group>"; };
+		C30BC3BD29732DFA00F6AD12 /* invaderkilled.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = invaderkilled.wav; sourceTree = "<group>"; };
+		C30BC3BE29732DFA00F6AD12 /* explosion.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = explosion.wav; sourceTree = "<group>"; };
+		C30BC3BF29732DFA00F6AD12 /* fastinvader1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = fastinvader1.wav; sourceTree = "<group>"; };
+		C30BC3C029732DFB00F6AD12 /* fastinvader4.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = fastinvader4.wav; sourceTree = "<group>"; };
+		C30BC3C129732DFB00F6AD12 /* ufo_highpitch.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = ufo_highpitch.wav; sourceTree = "<group>"; };
+		C30BC3C229732DFB00F6AD12 /* ufo_lowpitch.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = ufo_lowpitch.wav; sourceTree = "<group>"; };
+		C30BC3C329732DFB00F6AD12 /* fastinvader2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = fastinvader2.wav; sourceTree = "<group>"; };
+		C30BC3D02975839800F6AD12 /* OpeningScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = OpeningScene.sks; sourceTree = "<group>"; };
+		C30BC3D22975840A00F6AD12 /* OpeningScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpeningScene.swift; sourceTree = "<group>"; };
+		C30BC3D62978B51100F6AD12 /* SummaryScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = SummaryScene.sks; sourceTree = "<group>"; };
+		C30BC3D92978B52D00F6AD12 /* SummaryScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryScene.swift; sourceTree = "<group>"; };
+		C30BC3DB297B1D7800F6AD12 /* Enumerations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enumerations.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,9 +100,12 @@
 			isa = PBXGroup;
 			children = (
 				C30BC3902961BF5000F6AD12 /* AppDelegate.swift */,
-				C30BC3922961BF5000F6AD12 /* GameScene.sks */,
-				C30BC3962961BF5000F6AD12 /* GameScene.swift */,
+				C30BC3B62971A3C100F6AD12 /* Constants.swift */,
 				C30BC3982961BF5000F6AD12 /* GameViewController.swift */,
+				C30BC3DB297B1D7800F6AD12 /* Enumerations.swift */,
+				C30BC3D42975841800F6AD12 /* Game Scene */,
+				C30BC3D52975842200F6AD12 /* Opening Scene */,
+				C30BC3D82978B51B00F6AD12 /* Summary Scene */,
 				C30BC3A72961BFE000F6AD12 /* Sounds */,
 				C30BC39D2961BF5100F6AD12 /* Assets.xcassets */,
 				C30BC39A2961BF5000F6AD12 /* Main.storyboard */,
@@ -82,6 +117,14 @@
 		C30BC3A72961BFE000F6AD12 /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
+				C30BC3BE29732DFA00F6AD12 /* explosion.wav */,
+				C30BC3BF29732DFA00F6AD12 /* fastinvader1.wav */,
+				C30BC3C329732DFB00F6AD12 /* fastinvader2.wav */,
+				C30BC3BC29732DFA00F6AD12 /* fastinvader3.wav */,
+				C30BC3C029732DFB00F6AD12 /* fastinvader4.wav */,
+				C30BC3BD29732DFA00F6AD12 /* invaderkilled.wav */,
+				C30BC3C129732DFB00F6AD12 /* ufo_highpitch.wav */,
+				C30BC3C229732DFB00F6AD12 /* ufo_lowpitch.wav */,
 				C30BC3A82961C05000F6AD12 /* InvaderBullet.wav */,
 				C30BC3AB2961C05000F6AD12 /* InvaderHit.wav */,
 				C30BC3A92961C05000F6AD12 /* ShipBullet.wav */,
@@ -89,6 +132,35 @@
 				C30BC3B02961C07A00F6AD12 /* AssetLicensingNotes.txt */,
 			);
 			path = Sounds;
+			sourceTree = "<group>";
+		};
+		C30BC3D42975841800F6AD12 /* Game Scene */ = {
+			isa = PBXGroup;
+			children = (
+				C30BC3922961BF5000F6AD12 /* GameScene.sks */,
+				C30BC3962961BF5000F6AD12 /* GameScene.swift */,
+				C30BC3BA2972DDCD00F6AD12 /* Explosion.sks */,
+				C30BC3B22961C31000F6AD12 /* SpaceDust.sks */,
+			);
+			path = "Game Scene";
+			sourceTree = "<group>";
+		};
+		C30BC3D52975842200F6AD12 /* Opening Scene */ = {
+			isa = PBXGroup;
+			children = (
+				C30BC3D02975839800F6AD12 /* OpeningScene.sks */,
+				C30BC3D22975840A00F6AD12 /* OpeningScene.swift */,
+			);
+			path = "Opening Scene";
+			sourceTree = "<group>";
+		};
+		C30BC3D82978B51B00F6AD12 /* Summary Scene */ = {
+			isa = PBXGroup;
+			children = (
+				C30BC3D62978B51100F6AD12 /* SummaryScene.sks */,
+				C30BC3D92978B52D00F6AD12 /* SummaryScene.swift */,
+			);
+			path = "Summary Scene";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -149,13 +221,25 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C30BC3B32961C31000F6AD12 /* SpaceDust.sks in Resources */,
 				C30BC3AF2961C05000F6AD12 /* InvaderHit.wav in Resources */,
+				C30BC3C629732DFB00F6AD12 /* explosion.wav in Resources */,
 				C30BC39C2961BF5000F6AD12 /* Main.storyboard in Resources */,
 				C30BC3B12961C07A00F6AD12 /* AssetLicensingNotes.txt in Resources */,
 				C30BC3932961BF5000F6AD12 /* GameScene.sks in Resources */,
+				C30BC3BB2972DDCD00F6AD12 /* Explosion.sks in Resources */,
+				C30BC3C829732DFB00F6AD12 /* fastinvader4.wav in Resources */,
+				C30BC3C429732DFB00F6AD12 /* fastinvader3.wav in Resources */,
 				C30BC3AD2961C05000F6AD12 /* ShipBullet.wav in Resources */,
+				C30BC3D72978B51100F6AD12 /* SummaryScene.sks in Resources */,
 				C30BC39E2961BF5100F6AD12 /* Assets.xcassets in Resources */,
+				C30BC3CA29732DFB00F6AD12 /* ufo_lowpitch.wav in Resources */,
+				C30BC3C929732DFB00F6AD12 /* ufo_highpitch.wav in Resources */,
+				C30BC3D12975839800F6AD12 /* OpeningScene.sks in Resources */,
+				C30BC3C529732DFB00F6AD12 /* invaderkilled.wav in Resources */,
 				C30BC3A12961BF5100F6AD12 /* LaunchScreen.storyboard in Resources */,
+				C30BC3C729732DFB00F6AD12 /* fastinvader1.wav in Resources */,
+				C30BC3CB29732DFB00F6AD12 /* fastinvader2.wav in Resources */,
 				C30BC3AC2961C05000F6AD12 /* InvaderBullet.wav in Resources */,
 				C30BC3AE2961C05000F6AD12 /* ShipHit.wav in Resources */,
 			);
@@ -168,9 +252,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C30BC3DC297B1D7800F6AD12 /* Enumerations.swift in Sources */,
+				C30BC3B72971A3C100F6AD12 /* Constants.swift in Sources */,
 				C30BC3972961BF5000F6AD12 /* GameScene.swift in Sources */,
 				C30BC3992961BF5000F6AD12 /* GameViewController.swift in Sources */,
 				C30BC3912961BF5000F6AD12 /* AppDelegate.swift in Sources */,
+				C30BC3D32975840A00F6AD12 /* OpeningScene.swift in Sources */,
+				C30BC3DA2978B52D00F6AD12 /* SummaryScene.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -322,8 +410,9 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UIStatusBarHidden = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -353,8 +442,9 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UIStatusBarHidden = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
