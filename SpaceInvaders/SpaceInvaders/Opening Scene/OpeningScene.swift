@@ -15,7 +15,6 @@ class OpeningScene: SKScene {
     var highScore: Int = 0 {
         didSet {
             highScoreLabel.text = String(format: "%04d", highScore)
-            UserDefaults.standard.set(0, forKey: k.hiScore)
         }
     }
     
@@ -66,6 +65,7 @@ class OpeningScene: SKScene {
         } else if tapped.name == "reset" {
             // Reset the Hi-Score value
             highScore = 0
+            UserDefaults.standard.set(0, forKey: k.hiScore)
         } else {
             return
         }

@@ -11,7 +11,7 @@ class SummaryScene: SKScene {
     
     // MARK: - PROPERTIES
     // Labels
-    let score1Label = SKLabelNode(fontNamed: k.font)
+    let scoreLabel = SKLabelNode(fontNamed: k.font)
     let hiScoreLabel = SKLabelNode(fontNamed: k.font)
     let livesLabel = SKLabelNode(fontNamed: k.font)
     
@@ -23,7 +23,7 @@ class SummaryScene: SKScene {
     let timerLabel = SKLabelNode(fontNamed: k.fontBold)
     
     // Scores and Lives
-    var score1: Int = 0
+    var score: Int = 0
     var hiscore: Int = 0
     var lives: Int = 0 {
         didSet {
@@ -54,11 +54,11 @@ class SummaryScene: SKScene {
     override func didMove(to view: SKView) {
         getDefaults()
 
-        score1Label.position = CGPoint(x: 123.5, y: 912)
-        score1Label.zPosition = k.zPosLabels
-        score1Label.name = "label"
-        score1Label.text = String(format: "%04d", score1)
-        addChild(score1Label)
+        scoreLabel.position = CGPoint(x: 123.5, y: 912)
+        scoreLabel.zPosition = k.zPosLabels
+        scoreLabel.name = "label"
+        scoreLabel.text = String(format: "%04d", score)
+        addChild(scoreLabel)
         
         hiScoreLabel.position = CGPoint(x: 383.5, y: 912)
         hiScoreLabel.zPosition = k.zPosLabels
@@ -111,19 +111,19 @@ class SummaryScene: SKScene {
     }
     
     func getDefaults() {
-        score1 = UserDefaults.standard.integer(forKey: k.score)
+        score = UserDefaults.standard.integer(forKey: k.score)
         hiscore = UserDefaults.standard.integer(forKey: k.hiScore)
         lives = UserDefaults.standard.integer(forKey: k.lives)
         shotsFired = UserDefaults.standard.integer(forKey: k.shotsFired)
         invadersDestroyed = UserDefaults.standard.integer(forKey: k.invadersDestroyed)
         accuracy = (Double(invadersDestroyed) / Double(shotsFired) * 100)
         bonus = Int(accuracy) * 10
-        score1 += bonus
-        if score1 > hiscore {
-            hiscore = score1
-            UserDefaults.standard.set(score1, forKey: k.hiScore)
+        score += bonus
+        if score > hiscore {
+            hiscore = score
+            UserDefaults.standard.set(score, forKey: k.hiScore)
         }
-        UserDefaults.standard.set(score1, forKey: k.score)
+        UserDefaults.standard.set(score, forKey: k.score)
         countdown = 600
     }
 }

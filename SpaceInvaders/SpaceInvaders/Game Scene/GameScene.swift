@@ -25,20 +25,20 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var moveSound: String = "fastinvader3"
     
     // Scores and Lives
-    var score1: Int = 0 {
+    var score: Int = 0 {
         didSet {
-            score1Label.text = String(format: "%04d", score1)
-            UserDefaults.standard.set(score1, forKey: k.score)
-            if score1 > hiscore {
-                hiscore = score1
-                UserDefaults.standard.set(score1, forKey: k.hiScore)
+            score1Label.text = String(format: "%04d", score)
+            UserDefaults.standard.set(score, forKey: k.score)
+            if score > hiscore {
+                hiscore = score
+                UserDefaults.standard.set(score, forKey: k.hiScore)
             }
         }
     }
     var hiscore: Int = 0 {
         didSet {
             hiScoreLabel.text = String(format: "%04d", hiscore)
-            UserDefaults.standard.set(score1, forKey: k.hiScore)
+            UserDefaults.standard.set(score, forKey: k.hiScore)
         }
     }
     var lives: Int = 0 {
@@ -89,6 +89,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         shotsFired = UserDefaults.standard.integer(forKey: k.shotsFired)
         invadersDestroyed = UserDefaults.standard.integer(forKey: k.invadersDestroyed)
         lives = UserDefaults.standard.integer(forKey: k.lives)
+        hiscore = UserDefaults.standard.integer(forKey: k.hiScore)
+        score = UserDefaults.standard.integer(forKey: k.score)
     }
     
     override func update(_ currentTime: TimeInterval) {
@@ -197,14 +199,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     explosion.position = firstNode.position
                     addChild(explosion)
                 }
-                score1 += firstNode.name == "InvaderA" ? 30 : firstNode.name == "InvaderB" ? 20 : 10
+                score += firstNode.name == "InvaderA" ? 30 : firstNode.name == "InvaderB" ? 20 : 10
                 invadersDestroyed += 1
                 totalInvaders -= 1
                 scene?.run(SKAction.playSoundFileNamed("InvaderHit.wav", waitForCompletion: true))
                 secondNode.removeFromParent()
                 firstNode.removeFromParent()
                 if totalInvaders == 0 {
-                    isGameStarted = false
                     // Destroy all remaining barrier blocks
                     enumerateChildNodes(withName: "block") { node, _ in node.removeFromParent() }
                     // Save the shots fired and total invaders destroyed to UserDefaults
@@ -212,6 +213,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     UserDefaults.standard.set(invadersDestroyed, forKey: k.invadersDestroyed)
                     // Delay 2 seconds then show the summary scene
                     DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                        self.isGameStarted = false
                         if let nextScene = GameScene(fileNamed: "SummaryScene"){
                             nextScene.scaleMode = self.scaleMode
                             let transition = SKTransition.flipHorizontal(withDuration: 2)
@@ -294,7 +296,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         score1Label.position = CGPoint(x: 123.5, y: 912)
         score1Label.zPosition = k.zPosLabels
         score1Label.name = "label"
-        score1 = UserDefaults.standard.integer(forKey: k.score)
+        score = UserDefaults.standard.integer(forKey: k.score)
         addChild(score1Label)
 
         hiScoreLabel.position = CGPoint(x: 383.5, y: 912)
