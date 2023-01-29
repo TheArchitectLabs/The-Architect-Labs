@@ -13,7 +13,8 @@ class SummaryScene: SKScene {
     // Labels
     let scoreLabel = SKLabelNode(fontNamed: k.font)
     let hiScoreLabel = SKLabelNode(fontNamed: k.font)
-    let livesLabel = SKLabelNode(fontNamed: k.font)
+    let livesLabel = SKLabelNode(fontNamed: k.fontBold)
+    let wavesLabel = SKLabelNode(fontNamed: k.font)
     
     let shotsLabel = SKLabelNode(fontNamed: k.font)
     let destroyedLabel = SKLabelNode(fontNamed: k.font)
@@ -22,22 +23,15 @@ class SummaryScene: SKScene {
 
     let timerLabel = SKLabelNode(fontNamed: k.fontBold)
     
+    let extraLifeLabel = SKLabelNode(fontNamed: k.fontBold)
+    
     // Scores and Lives
     var score: Int = 0
     var hiscore: Int = 0
     var lives: Int = 0 {
         didSet {
-            enumerateChildNodes(withName: "lifeSprite") { node, _ in
-                node.removeFromParent()
-            }
-            for i in 0..<lives {
-                let liveSprite = SKSpriteNode(imageNamed: "Ship")
-                liveSprite.size = k.playerDims
-                liveSprite.name = "lifeSprite"
-                liveSprite.position = CGPoint(x: (670 - Int(liveSprite.frame.width)) + (Int(liveSprite.frame.width + 10) * i), y: 925)
-                liveSprite.zPosition = k.zPosLabels
-                addChild(liveSprite)
-            }
+            UserDefaults.standard.set(lives, forKey: k.lives)
+            livesLabel.text = String(format: "%01d", lives)
         }
     }
     var countdown: Int = 0 {
@@ -45,6 +39,7 @@ class SummaryScene: SKScene {
             timerLabel.text = String(format: "%04d", countdown)
         }
     }
+    var level: Int = 0
     var shotsFired: Int = 0
     var invadersDestroyed: Int = 0
     var accuracy: Double = 0
@@ -66,7 +61,22 @@ class SummaryScene: SKScene {
         hiScoreLabel.text = String(format: "%04d", hiscore)
         addChild(hiScoreLabel)
         
-        timerLabel.position = CGPoint(x: 516, y: 320)
+        livesLabel.position = CGPoint(x: 656.5, y: 912)
+        livesLabel.zPosition = 1
+        livesLabel.name = "label"
+        livesLabel.fontColor = .red
+        livesLabel.fontSize = 18
+        lives = UserDefaults.standard.integer(forKey: k.lives)
+        addChild(livesLabel)
+        
+        extraLifeLabel.position = CGPoint(x: 384, y: 774)
+        extraLifeLabel.zPosition = k.zPosLabels
+        extraLifeLabel.name = "label"
+        extraLifeLabel.fontColor = .red
+        extraLifeLabel.text = "** EXTRA LIFE AWARDED **"
+        addChild(extraLifeLabel)
+        
+        timerLabel.position = CGPoint(x: 516, y: 274)
         timerLabel.zPosition = k.zPosLabels
         timerLabel.name = "label"
         addChild(timerLabel)
@@ -94,6 +104,12 @@ class SummaryScene: SKScene {
         bonusLabel.name = "label"
         bonusLabel.text = String(format: "%04d", bonus)
         addChild(bonusLabel)
+        
+        wavesLabel.position = CGPoint(x: 480, y: 383)
+        wavesLabel.zPosition = k.zPosLabels
+        wavesLabel.name = "label"
+        wavesLabel.text = String(format: "%04d", level - 1)
+        addChild(wavesLabel)
     }
     
     override func update(_ currentTime: TimeInterval) {
@@ -113,6 +129,7 @@ class SummaryScene: SKScene {
     func getDefaults() {
         score = UserDefaults.standard.integer(forKey: k.score)
         hiscore = UserDefaults.standard.integer(forKey: k.hiScore)
+        level = UserDefaults.standard.integer(forKey: k.level)
         lives = UserDefaults.standard.integer(forKey: k.lives)
         shotsFired = UserDefaults.standard.integer(forKey: k.shotsFired)
         invadersDestroyed = UserDefaults.standard.integer(forKey: k.invadersDestroyed)
@@ -124,6 +141,15 @@ class SummaryScene: SKScene {
             UserDefaults.standard.set(score, forKey: k.hiScore)
         }
         UserDefaults.standard.set(score, forKey: k.score)
-        countdown = 600
+        
+        let wavesCompleted: Int = level - 1
+        if wavesCompleted.isMultiple(of: 3) {
+            extraLifeLabel.isHidden = false
+            lives += 1
+        } else {
+            extraLifeLabel.isHidden = true
+        }
+        
+        countdown = 500
     }
 }

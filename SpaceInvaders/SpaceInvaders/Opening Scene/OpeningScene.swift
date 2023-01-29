@@ -55,6 +55,8 @@ class OpeningScene: SKScene {
             UserDefaults.standard.set(2, forKey: k.lives)
             UserDefaults.standard.set(0, forKey: k.invadersDestroyed)
             UserDefaults.standard.set(0, forKey: k.shotsFired)
+            UserDefaults.standard.set(1, forKey: k.level)
+            UserDefaults.standard.set(0, forKey: k.mysteryPosition)
             
             // Open the game scene and begin play
             if let nextScene = GameScene(fileNamed: "GameScene"){

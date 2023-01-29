@@ -37,5 +37,14 @@ struct k {
     static let score: String = "score"
     static let hiScore: String = "hiscore"
     static let lives: String = "lives"
+    static let level: String = "level"
+    static let mysteryPosition: String = "mysteryPosition"
+    
+    // Mystery Ship Bonus Point Array
+    static let mysteryBonus: [Int] = [
+        100, 50, 50, 100, 150,
+        100, 100, 50, 300, 100,
+        100, 100, 50, 150, 100
+    ]
     
 }

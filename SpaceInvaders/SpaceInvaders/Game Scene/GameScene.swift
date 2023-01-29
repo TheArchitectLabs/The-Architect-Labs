@@ -16,7 +16,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     // Labels
     let score1Label = SKLabelNode(fontNamed: k.font)
     let hiScoreLabel = SKLabelNode(fontNamed: k.font)
-    let livesLabel = SKLabelNode(fontNamed: k.font)
+    let livesLabel = SKLabelNode(fontNamed: k.fontBold)
     
     // Player and Invaders
     let player = SKSpriteNode(imageNamed: "Ship")
@@ -38,25 +38,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var hiscore: Int = 0 {
         didSet {
             hiScoreLabel.text = String(format: "%04d", hiscore)
-            UserDefaults.standard.set(score, forKey: k.hiScore)
+            UserDefaults.standard.set(hiscore, forKey: k.hiScore)
         }
     }
     var lives: Int = 0 {
         didSet {
-            enumerateChildNodes(withName: "lifeSprite") { node, _ in
-                node.removeFromParent()
-            }
-            for i in 0..<lives {
-                let liveSprite = SKSpriteNode(imageNamed: "Ship")
-                liveSprite.size = k.playerDims
-                liveSprite.name = "lifeSprite"
-                liveSprite.position = CGPoint(x: (670 - Int(liveSprite.frame.width)) + (Int(liveSprite.frame.width + 10) * i), y: 925)
-                liveSprite.zPosition = k.zPosLabels
-                addChild(liveSprite)
-            }
+            livesLabel.text = String(format: "%01d", lives)
             UserDefaults.standard.set(lives, forKey: k.lives)
         }
     }
+    var level: Int = 1
     var shotsFired: Int = 0
     var invadersDestroyed: Int = 0
     
@@ -72,6 +63,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var timeOfLastShot: CFTimeInterval = 2.0
     var totalHits: Int = 55
     
+    var randomBonusTime: Int = 0
+    var bonusPosition: Int = 0
+    var bonusScore: Int = 0
+    var bonusLeftRight: Bool = false
+    
     var invaderCompressed: Bool = false
     
     // MARK: - METHODS
@@ -80,17 +76,21 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         physicsWorld.gravity = .zero
         motionManager.startAccelerometerUpdates()
 
+        shotsFired = UserDefaults.standard.integer(forKey: k.shotsFired)
+        invadersDestroyed = UserDefaults.standard.integer(forKey: k.invadersDestroyed)
+        lives = UserDefaults.standard.integer(forKey: k.lives)
+        hiscore = UserDefaults.standard.integer(forKey: k.hiScore)
+        score = UserDefaults.standard.integer(forKey: k.score)
+        level = UserDefaults.standard.integer(forKey: k.level)
+        
+        randomBonusTime = Int.random(in: 900...4500 )
+
         createParticles()
         createBreakableBarrier()
         addHeaderLabels()
         createPlayer()
         createInvaders()
         
-        shotsFired = UserDefaults.standard.integer(forKey: k.shotsFired)
-        invadersDestroyed = UserDefaults.standard.integer(forKey: k.invadersDestroyed)
-        lives = UserDefaults.standard.integer(forKey: k.lives)
-        hiscore = UserDefaults.standard.integer(forKey: k.hiScore)
-        score = UserDefaults.standard.integer(forKey: k.score)
     }
     
     override func update(_ currentTime: TimeInterval) {
@@ -115,6 +115,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 }
             }
             
+            // Randomly create mystery ship
+            randomBonusTime -= 1
+            if randomBonusTime == 0 {
+                bonusLeftRight = Bool.random()
+                createMysteryInvader(moveLeft: bonusLeftRight)
+            }
+            
             // Have a random invader shoot once per second
             if totalInvaders > 0 {
                 if currentTime - timeOfLastShot > 1.0 {
@@ -130,14 +137,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     shooterShot.zPosition = k.zPosInvader
                     shooterShot.name = "invaderWeapon"
                     addChild(shooterShot)
-                    
+
                     shooterShot.physicsBody = SKPhysicsBody(rectangleOf: shooterShot.size)
                     shooterShot.physicsBody?.categoryBitMask = CollisionType.invaderWeapon.rawValue
-                    shooterShot.physicsBody?.collisionBitMask = CollisionType.player.rawValue | CollisionType.playerWeapon.rawValue
-                    shooterShot.physicsBody?.contactTestBitMask = CollisionType.player.rawValue | CollisionType.playerWeapon.rawValue
+                    shooterShot.physicsBody?.collisionBitMask = CollisionType.player.rawValue | CollisionType.playerWeapon.rawValue | CollisionType.block.rawValue
+                    shooterShot.physicsBody?.contactTestBitMask = CollisionType.player.rawValue | CollisionType.playerWeapon.rawValue | CollisionType.block.rawValue
                     shooterShot.physicsBody?.isDynamic = false
-                    
-                    let move = SKAction.move(to: CGPoint(x: shooterShot.position.x, y: -50), duration: 1.0)
+
+                    let move = SKAction.move(to: CGPoint(x: shooterShot.position.x, y: 25), duration: 1.0)
                     let sequence = SKAction.sequence([move, .removeFromParent()])
                     let shotSound = SKAction.playSoundFileNamed("InvaderBullet.wav", waitForCompletion: true)
                     shooterShot.run(SKAction.group([sequence, shotSound]))
@@ -162,8 +169,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         playerShot.physicsBody = SKPhysicsBody(rectangleOf: playerShot.size)
         playerShot.physicsBody?.categoryBitMask = CollisionType.playerWeapon.rawValue
-        playerShot.physicsBody?.collisionBitMask = CollisionType.invader.rawValue | CollisionType.invaderWeapon.rawValue
-        playerShot.physicsBody?.contactTestBitMask = CollisionType.invader.rawValue | CollisionType.invaderWeapon.rawValue
+        playerShot.physicsBody?.collisionBitMask = CollisionType.invader.rawValue | CollisionType.invaderWeapon.rawValue | CollisionType.block.rawValue | CollisionType.mysteryInvader.rawValue
+        playerShot.physicsBody?.contactTestBitMask = CollisionType.invader.rawValue | CollisionType.invaderWeapon.rawValue | CollisionType.block.rawValue | CollisionType.mysteryInvader.rawValue
         playerShot.physicsBody?.isDynamic = false
         
         let move = SKAction.move(to: CGPoint(x: playerShot.position.x, y: 1050), duration: 1.0)
@@ -172,6 +179,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         playerShot.run(SKAction.group([sequence, shotSound]))
         
         shotsFired += 1
+        bonusPosition = shotsFired % 15
     }
     
     func didBegin(_ contact: SKPhysicsContact) {
@@ -182,65 +190,21 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let firstNode = sortedNodes[0]
         let secondNode = sortedNodes[1]
         
-        if secondNode.name == "playerWeapon" {
-            guard isPlayerAlive else { return }
-            
-            if firstNode.name == "block" {
-                // Player hit a barrier - remove the player weapon
-                secondNode.removeFromParent()
-                firstNode.removeFromParent()
-            } else if firstNode.name == "invaderWeapon" {
-                // Player hit an invader weapon - remove both
-                secondNode.removeFromParent()
-                firstNode.removeFromParent()
-            } else {
-                // Player hit an invader - remove the invader and player weapon
-                if let explosion = SKEmitterNode(fileNamed: "Explosion") {
-                    explosion.position = firstNode.position
-                    addChild(explosion)
-                }
-                score += firstNode.name == "InvaderA" ? 30 : firstNode.name == "InvaderB" ? 20 : 10
-                invadersDestroyed += 1
-                totalInvaders -= 1
-                scene?.run(SKAction.playSoundFileNamed("InvaderHit.wav", waitForCompletion: true))
-                secondNode.removeFromParent()
-                firstNode.removeFromParent()
-                if totalInvaders == 0 {
-                    // Destroy all remaining barrier blocks
-                    enumerateChildNodes(withName: "block") { node, _ in node.removeFromParent() }
-                    // Save the shots fired and total invaders destroyed to UserDefaults
-                    UserDefaults.standard.set(shotsFired, forKey: k.shotsFired)
-                    UserDefaults.standard.set(invadersDestroyed, forKey: k.invadersDestroyed)
-                    // Delay 2 seconds then show the summary scene
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                        self.isGameStarted = false
-                        if let nextScene = GameScene(fileNamed: "SummaryScene"){
-                            nextScene.scaleMode = self.scaleMode
-                            let transition = SKTransition.flipHorizontal(withDuration: 2)
-                            self.view?.presentScene(nextScene, transition: transition)
-                        }
-                    }
-                }
-            }
-        } else if secondNode.name == "invaderWeapon" {
-            // Invader hit a barrier - remove the invader weapon
-            secondNode.removeFromParent()
+        switch secondNode.name {
+        case "invaderWeapon": // Invader weapon hit the block - Remove both (1 & 2) - No explosions
             firstNode.removeFromParent()
-        } else {
-            // Invader hit the player - remove the player and invader weapon
-            if let explosion = SKEmitterNode(fileNamed: "Explosion") {
-                explosion.position = firstNode.position
-                addChild(explosion)
-            }
-            scene?.run(SKAction.playSoundFileNamed("InvaderHit.wav", waitForCompletion: true))
             secondNode.removeFromParent()
+        case "player": // Invader or Invader weapon hit the player - Remove both (1 & 2) - Player explosion (2)
             firstNode.removeFromParent()
+            secondNode.removeFromParent()
+            createExplosion(at: secondNode)
             
             if lives == 0 {
                 isGameStarted = false
                 isPlayerAlive = false
                 let gameOver = SKSpriteNode(imageNamed: "gameOver")
                 gameOver.position = CGPoint(x: 384, y: 512)
+                gameOver.setScale(0.9)
                 gameOver.zPosition = 100
                 addChild(gameOver)
                 DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
@@ -253,10 +217,58 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             } else {
                 isPlayerAlive = false
                 lives -= 1
-                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
                     self.createPlayer()
                 }
             }
+        case "playerWeapon":
+            if firstNode.name == "block" {
+                // Player weapon hit a block - Remove both - No explosion
+                firstNode.removeFromParent()
+                secondNode.removeFromParent()
+            } else if firstNode.name == "mystery" {
+                // Player weapon hit a Mystery invader - Remove both - Mystery invader explosion (1)
+                createExplosion(at: firstNode)
+                bonusScore = k.mysteryBonus[bonusPosition]
+                score += bonusScore
+                randomBonusTime = Int.random(in: 900...4500 )
+                secondNode.removeFromParent()
+                firstNode.removeFromParent()
+            } else if firstNode.name == "invaderweapon" {
+                // Player weapon hit an Invader weapon - Remove both - No explosion
+                secondNode.removeFromParent()
+                firstNode.removeFromParent()
+            } else {
+                // Player weapon hit an invader - Remove both - Invader explosion (1)
+                createExplosion(at: firstNode)
+                score += firstNode.name == "InvaderA" ? 30 : firstNode.name == "InvaderB" ? 20 : 10
+                invadersDestroyed += 1
+                totalInvaders -= 1
+                secondNode.removeFromParent()
+                firstNode.removeFromParent()
+                if totalInvaders == 0 {
+                    // Increase the level number
+                    level += 1
+                    // Destroy all remaining barrier blocks and enemy weapons
+                    enumerateChildNodes(withName: "block") { node, _ in node.removeFromParent() }
+                    enumerateChildNodes(withName: "invaderweapon") { node, _ in node.removeFromParent() }
+                    // Save the shots fired, total invaders destroyed, and level number to UserDefaults
+                    UserDefaults.standard.set(shotsFired, forKey: k.shotsFired)
+                    UserDefaults.standard.set(invadersDestroyed, forKey: k.invadersDestroyed)
+                    UserDefaults.standard.set(level, forKey: k.level)
+                    // Delay 2 seconds then show the summary scene
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                        self.isGameStarted = false
+                        if let nextScene = GameScene(fileNamed: "SummaryScene"){
+                            nextScene.scaleMode = self.scaleMode
+                            let transition = SKTransition.flipHorizontal(withDuration: 2)
+                            self.view?.presentScene(nextScene, transition: transition)
+                        }
+                    }
+                }
+            }
+        default: // Invader hit block - Remove the block (2) - No explosions
+            secondNode.removeFromParent()
         }
     }
     
@@ -276,16 +288,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             for row in 1...3 {
                 for col in 0...5 {
-                    let block = SKSpriteNode(color: .red, size: CGSize(width: 12, height: 24))
+                    let block = SKSpriteNode(color: .green, size: CGSize(width: 12, height: 24))
                     block.position = CGPoint(x: startX + (Int(block.frame.width) * col), y: 250 + Int(block.frame.height) * row)
                     block.zPosition = k.zPosPlayer
                     block.name = "block"
                     addChild(block)
                     
                     block.physicsBody = SKPhysicsBody(rectangleOf: block.size)
-                    block.physicsBody?.categoryBitMask = CollisionType.barrier.rawValue
-                    block.physicsBody?.collisionBitMask = CollisionType.invaderWeapon.rawValue | CollisionType.playerWeapon.rawValue
-                    block.physicsBody?.contactTestBitMask = CollisionType.invaderWeapon.rawValue | CollisionType.playerWeapon.rawValue
+                    block.physicsBody?.categoryBitMask = CollisionType.block.rawValue
+                    block.physicsBody?.collisionBitMask = CollisionType.invaderWeapon.rawValue | CollisionType.playerWeapon.rawValue | CollisionType.invader.rawValue
+                    block.physicsBody?.contactTestBitMask = CollisionType.invaderWeapon.rawValue | CollisionType.playerWeapon.rawValue | CollisionType.invader.rawValue
                     block.physicsBody?.isDynamic = true
                 }
             }
@@ -304,6 +316,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         hiScoreLabel.name = "label"
         hiscore = UserDefaults.standard.integer(forKey: k.hiScore)
         addChild(hiScoreLabel)
+        
+        livesLabel.position = CGPoint(x: 656.5, y: 912)
+        livesLabel.zPosition = 1
+        livesLabel.name = "label"
+        livesLabel.fontColor = .red
+        livesLabel.fontSize = 18
+        lives = UserDefaults.standard.integer(forKey: k.lives)
+        addChild(livesLabel)
     }
     
     // Player
@@ -326,6 +346,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     // Invaders
     func createInvaders() {
         var invaderSprite: String?
+        var levelOffset: Int = 0
+        
+        levelOffset = level % 12
+        if levelOffset == 0 {
+            levelOffset = 1
+        }
         
         for row in 1...k.rows {
             if row == 1 {
@@ -339,7 +365,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             for col in 1...k.cols {
                 let invader = SKSpriteNode(imageNamed: "\(invaderSprite!)_00")
                 invader.size = k.invaderDims
-                invader.position = CGPoint(x: Int(k.invaderDims.width * 1.5) * col, y: 800 - (row * Int(k.invaderDims.height * 1.5)))
+                invader.position = CGPoint(x: Int(k.invaderDims.width * 1.5) * col, y: 810 - (levelOffset * 15) - (row * Int(k.invaderDims.height * 1.5)))
                 invader.zPosition = k.zPosInvader
                 invader.name = invaderSprite
                 addChild(invader)
@@ -347,7 +373,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 invader.physicsBody = SKPhysicsBody(texture: invader.texture!, size: k.invaderDims)
                 invader.physicsBody?.categoryBitMask = CollisionType.invader.rawValue
                 invader.physicsBody?.collisionBitMask = CollisionType.player.rawValue | CollisionType.playerWeapon.rawValue
-                invader.physicsBody?.contactTestBitMask = CollisionType.player.rawValue | CollisionType.playerWeapon.rawValue
+                invader.physicsBody?.contactTestBitMask = CollisionType.player.rawValue | CollisionType.playerWeapon.rawValue | CollisionType.block.rawValue
                 invader.physicsBody?.isDynamic = true
             }
         }
@@ -420,6 +446,59 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         default:
             moveSound = "fastinvader3"
             timePerMove = 0.5
+        }
+    }
+    
+    func createMysteryInvader(moveLeft: Bool) {
+        guard childNode(withName: "mystery") == nil else { return }
+        
+        let mysteryInvader = SKSpriteNode(imageNamed: "mystery_ship")
+        mysteryInvader.setScale(0.3)
+        mysteryInvader.position = moveLeft ? CGPoint(x: 800, y: 820) : CGPoint(x: -32, y: 820)
+        mysteryInvader.zPosition = k.zPosInvader
+        mysteryInvader.name = "mystery"
+        addChild(mysteryInvader)
+        
+        mysteryInvader.physicsBody = SKPhysicsBody(texture: mysteryInvader.texture!, size: mysteryInvader.size)
+        mysteryInvader.physicsBody?.categoryBitMask = CollisionType.mysteryInvader.rawValue
+        mysteryInvader.physicsBody?.collisionBitMask = CollisionType.playerWeapon.rawValue
+        mysteryInvader.physicsBody?.contactTestBitMask = CollisionType.playerWeapon.rawValue
+        mysteryInvader.physicsBody?.isDynamic = true
+        
+        let mysteryMove = moveLeft ? SKAction.move(to: CGPoint(x: -32, y: 820), duration: 5) : SKAction.move(to: CGPoint(x: 800, y: 820), duration: 5)
+        let mysterySound = SKAction.repeatForever(SKAction.playSoundFileNamed("ufo_highpitch.wav", waitForCompletion: true))
+        let mysterySequence = SKAction.sequence([mysteryMove, .removeFromParent()])
+        mysteryInvader.run(SKAction.group([mysterySequence, mysterySound]))
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+            self.randomBonusTime = Int.random(in: 900...4500)
+        }
+    }
+    
+    func createExplosion(at node: SKNode) {
+        let explosion = SKSpriteNode(imageNamed: "explosion")
+        explosion.size = CGSize(width: 48, height: 32)
+        explosion.zPosition = k.zPosInvader
+        explosion.position = node.position
+        explosion.name = "explosion"
+        addChild(explosion)
+        
+        let fade = SKAction.fadeOut(withDuration: 0.4)
+        let sound = SKAction.playSoundFileNamed("InvaderHit.wav", waitForCompletion: true)
+        let sequence = SKAction.sequence([fade, .removeFromParent()])
+        
+        let group = SKAction.group([sequence, sound])
+        explosion.run(group)
+        
+        if node.name == "mystery" {
+            let pointLabel = SKLabelNode(fontNamed: k.fontBold)
+            pointLabel.fontSize = 20
+            pointLabel.position = node.position
+            pointLabel.text = String(k.mysteryBonus[bonusPosition])
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+                self.addChild(pointLabel)
+                pointLabel.run(sequence)
+            }
         }
     }
 }

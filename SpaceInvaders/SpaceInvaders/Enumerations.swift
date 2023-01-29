@@ -12,7 +12,8 @@ enum CollisionType: UInt32 {
     case playerWeapon = 2
     case invader = 4
     case invaderWeapon = 8
-    case barrier = 16
+    case block = 16
+    case mysteryInvader = 32
 }
 
 enum MovementDirection {
