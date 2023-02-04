@@ -492,7 +492,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         addChild(explosion)
         
         let fade = SKAction.fadeOut(withDuration: 0.4)
-        let sound = SKAction.playSoundFileNamed("InvaderHit.wav", waitForCompletion: true)
+        let sound = SKAction.playSoundFileNamed(node.name == "player" ? "ShipHit.wav" : "InvaderHit.wav", waitForCompletion: true)
         let sequence = SKAction.sequence([fade, .removeFromParent()])
         
         let group = SKAction.group([sequence, sound])
