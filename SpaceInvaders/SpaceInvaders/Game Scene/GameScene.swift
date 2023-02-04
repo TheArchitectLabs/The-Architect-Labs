@@ -59,6 +59,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var isGameStarted: Bool = false
     var timeOfLastMove: CFTimeInterval = 2.0
     var timePerMove: CFTimeInterval = 0.5
+    var adjustTimeForHeight: CFTimeInterval = 0.0
+    var adjustLevelForHeight: Double = 0.0
     var totalInvaders: Int = 55
     var timeOfLastShot: CFTimeInterval = 2.0
     var totalHits: Int = 55
@@ -352,6 +354,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if levelOffset == 0 {
             levelOffset = 1
         }
+        adjustLevelForHeight = 1.0
         
         for row in 1...k.rows {
             if row == 1 {
@@ -392,12 +395,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             case .left:
                 node.position = CGPoint(x: node.position.x - 10, y: node.position.y)
             case .downThenLeft, .downThenRight:
-                node.position = CGPoint(x: node.position.x, y: node.position.y - 10)
+                node.position = CGPoint(x: node.position.x, y: node.position.y - 15)
             case .none:
                 break
             }
             let compress = SKAction.setTexture(SKTexture(imageNamed: self.invaderCompressed ? "\(node.name!)_01" : "\(node.name!)_00"))
             node.run(compress)
+        }
+        
+        if self.moveDirection == .downThenLeft || self.moveDirection == .downThenRight {
+            adjustLevelForHeight += 1.0
+            adjustTimeForHeight = (adjustLevelForHeight / 20) * 0.03125
         }
     }
     
@@ -436,16 +444,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         switch totalInvaders {
         case 1...6:
             moveSound = "fastinvader4"
-            timePerMove = 0.0625
+            timePerMove = 0.0625 - adjustTimeForHeight
         case 7...13:
             moveSound = "fastinvader1"
-            timePerMove = 0.125
+            timePerMove = 0.125 - adjustTimeForHeight
         case 14...27:
             moveSound = "fastinvader2"
-            timePerMove = 0.25
+            timePerMove = 0.25 - adjustTimeForHeight
         default:
             moveSound = "fastinvader3"
-            timePerMove = 0.5
+            timePerMove = 0.5 - adjustTimeForHeight
         }
     }
     
