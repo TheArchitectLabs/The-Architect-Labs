@@ -14,9 +14,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     // MARK: - PROPERTIES
     // Labels
-    let score1Label = SKLabelNode(fontNamed: k.font)
-    let hiScoreLabel = SKLabelNode(fontNamed: k.font)
-    let livesLabel = SKLabelNode(fontNamed: k.fontBold)
+    let score1Label = SKLabelNode(fontNamed: k.fonts.normal)
+    let hiScoreLabel = SKLabelNode(fontNamed: k.fonts.normal)
+    let livesLabel = SKLabelNode(fontNamed: k.fonts.bold)
     
     // Player and Invaders
     let player = SKSpriteNode(imageNamed: "Ship")
@@ -28,23 +28,23 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var score: Int = 0 {
         didSet {
             score1Label.text = String(format: "%04d", score)
-            UserDefaults.standard.set(score, forKey: k.score)
+            UserDefaults.standard.set(score, forKey: k.userDefaults.score)
             if score > hiscore {
                 hiscore = score
-                UserDefaults.standard.set(score, forKey: k.hiScore)
+                UserDefaults.standard.set(score, forKey: k.userDefaults.hiScore)
             }
         }
     }
     var hiscore: Int = 0 {
         didSet {
             hiScoreLabel.text = String(format: "%04d", hiscore)
-            UserDefaults.standard.set(hiscore, forKey: k.hiScore)
+            UserDefaults.standard.set(hiscore, forKey: k.userDefaults.hiScore)
         }
     }
     var lives: Int = 0 {
         didSet {
             livesLabel.text = String(format: "%01d", lives)
-            UserDefaults.standard.set(lives, forKey: k.lives)
+            UserDefaults.standard.set(lives, forKey: k.userDefaults.lives)
         }
     }
     var level: Int = 1
@@ -78,12 +78,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         physicsWorld.gravity = .zero
         motionManager.startAccelerometerUpdates()
 
-        shotsFired = UserDefaults.standard.integer(forKey: k.shotsFired)
-        invadersDestroyed = UserDefaults.standard.integer(forKey: k.invadersDestroyed)
-        lives = UserDefaults.standard.integer(forKey: k.lives)
-        hiscore = UserDefaults.standard.integer(forKey: k.hiScore)
-        score = UserDefaults.standard.integer(forKey: k.score)
-        level = UserDefaults.standard.integer(forKey: k.level)
+        shotsFired = UserDefaults.standard.integer(forKey: k.userDefaults.shotsFired)
+        invadersDestroyed = UserDefaults.standard.integer(forKey: k.userDefaults.invadersDestroyed)
+        lives = UserDefaults.standard.integer(forKey: k.userDefaults.lives)
+        hiscore = UserDefaults.standard.integer(forKey: k.userDefaults.hiScore)
+        score = UserDefaults.standard.integer(forKey: k.userDefaults.score)
+        level = UserDefaults.standard.integer(forKey: k.userDefaults.level)
         
         randomBonusTime = Int.random(in: 900...4500 )
 
@@ -136,7 +136,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     let shooter = remainingInvaders[remainingInvaderIndex]
                     let shooterShot = SKSpriteNode(color: .red, size: k.invaderWeaponDims)
                     shooterShot.position = shooter.position
-                    shooterShot.zPosition = k.zPosInvader
+                    shooterShot.zPosition = k.layers.invader
                     shooterShot.name = "invaderWeapon"
                     addChild(shooterShot)
 
@@ -165,7 +165,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         let playerShot = SKSpriteNode(color: .green, size: k.playerWeaponDims)
         playerShot.position = player.position
-        playerShot.zPosition = k.zPosPlayer
+        playerShot.zPosition = k.layers.player
         playerShot.name = "playerWeapon"
         addChild(playerShot)
         
@@ -210,7 +210,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 gameOver.zPosition = 100
                 addChild(gameOver)
                 DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-                    if let openScene = GameScene(fileNamed: "OpeningScene"){
+                    if let openScene = GameScene(fileNamed: k.scenes.open){
                         openScene.scaleMode = self.scaleMode
                         let transition = SKTransition.fade(withDuration: 1)
                         self.view?.presentScene(openScene, transition: transition)
@@ -255,13 +255,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     enumerateChildNodes(withName: "block") { node, _ in node.removeFromParent() }
                     enumerateChildNodes(withName: "invaderweapon") { node, _ in node.removeFromParent() }
                     // Save the shots fired, total invaders destroyed, and level number to UserDefaults
-                    UserDefaults.standard.set(shotsFired, forKey: k.shotsFired)
-                    UserDefaults.standard.set(invadersDestroyed, forKey: k.invadersDestroyed)
-                    UserDefaults.standard.set(level, forKey: k.level)
+                    UserDefaults.standard.set(shotsFired, forKey: k.userDefaults.shotsFired)
+                    UserDefaults.standard.set(invadersDestroyed, forKey: k.userDefaults.invadersDestroyed)
+                    UserDefaults.standard.set(level, forKey: k.userDefaults.level)
                     // Delay 2 seconds then show the summary scene
                     DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                         self.isGameStarted = false
-                        if let nextScene = GameScene(fileNamed: "SummaryScene"){
+                        if let nextScene = GameScene(fileNamed: k.scenes.summary){
                             nextScene.scaleMode = self.scaleMode
                             let transition = SKTransition.flipHorizontal(withDuration: 2)
                             self.view?.presentScene(nextScene, transition: transition)
@@ -279,7 +279,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func createParticles() {
         guard let particles = SKEmitterNode(fileNamed: "SpaceDust") else { fatalError("Could not load particle file") }
         particles.position = CGPoint(x: frame.width / 2, y: frame.height / 2)
-        particles.zPosition = k.zPosParticles
+        particles.zPosition = k.layers.particles
         particles.advanceSimulationTime(10)
         addChild(particles)
     }
@@ -292,7 +292,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 for col in 0...5 {
                     let block = SKSpriteNode(color: .green, size: CGSize(width: 12, height: 24))
                     block.position = CGPoint(x: startX + (Int(block.frame.width) * col), y: 250 + Int(block.frame.height) * row)
-                    block.zPosition = k.zPosPlayer
+                    block.zPosition = k.layers.player
                     block.name = "block"
                     addChild(block)
                     
@@ -308,23 +308,23 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func addHeaderLabels() {
         score1Label.position = CGPoint(x: 123.5, y: 912)
-        score1Label.zPosition = k.zPosLabels
+        score1Label.zPosition = k.layers.labels
         score1Label.name = "label"
-        score = UserDefaults.standard.integer(forKey: k.score)
+        score = UserDefaults.standard.integer(forKey: k.userDefaults.score)
         addChild(score1Label)
 
         hiScoreLabel.position = CGPoint(x: 383.5, y: 912)
-        hiScoreLabel.zPosition = k.zPosLabels
+        hiScoreLabel.zPosition = k.layers.labels
         hiScoreLabel.name = "label"
-        hiscore = UserDefaults.standard.integer(forKey: k.hiScore)
+        hiscore = UserDefaults.standard.integer(forKey: k.userDefaults.hiScore)
         addChild(hiScoreLabel)
         
         livesLabel.position = CGPoint(x: 656.5, y: 912)
-        livesLabel.zPosition = 1
+        livesLabel.zPosition = k.layers.labels
         livesLabel.name = "label"
         livesLabel.fontColor = .red
         livesLabel.fontSize = 18
-        lives = UserDefaults.standard.integer(forKey: k.lives)
+        lives = UserDefaults.standard.integer(forKey: k.userDefaults.lives)
         addChild(livesLabel)
     }
     
@@ -332,7 +332,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func createPlayer() {
         player.size = k.playerDims
         player.position = CGPoint(x: frame.width / 2, y: 76)
-        player.zPosition = k.zPosPlayer
+        player.zPosition = k.layers.player
         player.name = "player"
         addChild(player)
         
@@ -369,7 +369,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 let invader = SKSpriteNode(imageNamed: "\(invaderSprite!)_00")
                 invader.size = k.invaderDims
                 invader.position = CGPoint(x: Int(k.invaderDims.width * 1.5) * col, y: 810 - (levelOffset * 15) - (row * Int(k.invaderDims.height * 1.5)))
-                invader.zPosition = k.zPosInvader
+                invader.zPosition = k.layers.invader
                 invader.name = invaderSprite
                 addChild(invader)
                 
@@ -463,7 +463,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let mysteryInvader = SKSpriteNode(imageNamed: "mystery_ship")
         mysteryInvader.setScale(0.3)
         mysteryInvader.position = moveLeft ? CGPoint(x: 800, y: 820) : CGPoint(x: -32, y: 820)
-        mysteryInvader.zPosition = k.zPosInvader
+        mysteryInvader.zPosition = k.layers.invader
         mysteryInvader.name = "mystery"
         addChild(mysteryInvader)
         
@@ -486,7 +486,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func createExplosion(at node: SKNode) {
         let explosion = SKSpriteNode(imageNamed: "explosion")
         explosion.size = CGSize(width: 48, height: 32)
-        explosion.zPosition = k.zPosInvader
+        explosion.zPosition = k.layers.invader
         explosion.position = node.position
         explosion.name = "explosion"
         addChild(explosion)
@@ -499,7 +499,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         explosion.run(group)
         
         if node.name == "mystery" {
-            let pointLabel = SKLabelNode(fontNamed: k.fontBold)
+            let pointLabel = SKLabelNode(fontNamed: k.fonts.bold)
             pointLabel.fontSize = 20
             pointLabel.position = node.position
             pointLabel.text = String(k.mysteryBonus[bonusPosition])
