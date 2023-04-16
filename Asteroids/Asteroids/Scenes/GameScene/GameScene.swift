@@ -120,10 +120,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     override func update(_ currentTime: TimeInterval) {
         guard isPlayerAlive else { return }
         // Force the player to wrap around the screen continuously
-        if player.position.y > 744 { player.position.y = 24 }
-        if player.position.y < 24 { player.position.y = 744 }
-        if player.position.x > 1000 { player.position.x = 24 }
-        if player.position.x < 24 { player.position.x = 1000 }
+        if player.position.y > 768 { player.position.y = 0 }
+        if player.position.y < 0 { player.position.y = 768 }
+        if player.position.x > 1024 { player.position.x = 0 }
+        if player.position.x < 0 { player.position.x = 1024 }
         
         // Rotate the player left or right until the Left or Right button is released
         if isRotatingLeft {
@@ -157,10 +157,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         for node in self.children {
             if let theAsteroid: Asteroid = node as? Asteroid {
                 theAsteroid.move()
-                if theAsteroid.position.y > 744 { theAsteroid.position.y = 24 }
-                if theAsteroid.position.y < 24 { theAsteroid.position.y = 744 }
-                if theAsteroid.position.x > 1000 { theAsteroid.position.x = 24 }
-                if theAsteroid.position.x < 24 { theAsteroid.position.x = 1000 }
+                if theAsteroid.position.y > 768 { theAsteroid.position.y = 0 }
+                if theAsteroid.position.y < 0 { theAsteroid.position.y = 768 }
+                if theAsteroid.position.x > 1024 { theAsteroid.position.x = 0 }
+                if theAsteroid.position.x < 0 { theAsteroid.position.x = 1024 }
             }
         }
     }

@@ -88,7 +88,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         randomBonusTime = Int.random(in: 900...4500 )
 
         createParticles()
-        createBreakableBarrier()
+        createBreakableBlocks()
         addHeaderLabels()
         createPlayer()
         createInvaders()
@@ -284,7 +284,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         addChild(particles)
     }
     
-    func createBreakableBarrier() {
+    func createBreakableBlocks() {
         for barrier in 0...3 {
             let startX = 132 + (barrier * 72) + (barrier * 72)
             
@@ -484,7 +484,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func createExplosion(at node: SKNode) {
-        let explosion = SKSpriteNode(imageNamed: "explosion")
+        let explosion = SKSpriteNode(imageNamed: "explosion2")
         explosion.size = CGSize(width: 48, height: 32)
         explosion.zPosition = k.layers.invader
         explosion.position = node.position

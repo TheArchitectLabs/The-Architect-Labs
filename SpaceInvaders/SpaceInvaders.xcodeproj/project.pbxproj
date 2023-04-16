@@ -99,13 +99,13 @@
 				C30BC3B62971A3C100F6AD12 /* Constants.swift */,
 				C30BC3982961BF5000F6AD12 /* GameViewController.swift */,
 				C30BC3DB297B1D7800F6AD12 /* Enumerations.swift */,
+				C3905CE229AA47C400E7EF3F /* LaunchScene */,
 				C30BC3D52975842200F6AD12 /* Opening Scene */,
 				C30BC3D42975841800F6AD12 /* Game Scene */,
 				C30BC3D82978B51B00F6AD12 /* Summary Scene */,
 				C30BC3A72961BFE000F6AD12 /* Sounds */,
 				C30BC39D2961BF5100F6AD12 /* Assets.xcassets */,
 				C30BC39A2961BF5000F6AD12 /* Main.storyboard */,
-				C30BC39F2961BF5100F6AD12 /* LaunchScreen.storyboard */,
 			);
 			path = SpaceInvaders;
 			sourceTree = "<group>";
@@ -155,6 +155,14 @@
 				C30BC3D92978B52D00F6AD12 /* SummaryScene.swift */,
 			);
 			path = "Summary Scene";
+			sourceTree = "<group>";
+		};
+		C3905CE229AA47C400E7EF3F /* LaunchScene */ = {
+			isa = PBXGroup;
+			children = (
+				C30BC39F2961BF5100F6AD12 /* LaunchScreen.storyboard */,
+			);
+			path = LaunchScene;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

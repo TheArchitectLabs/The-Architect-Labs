@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C36E158029A41E24008301BF /* StartScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = C36E157F29A41E24008301BF /* StartScene.sks */; };
+		C36E158229A41E99008301BF /* StartScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36E158129A41E99008301BF /* StartScene.swift */; };
 		C3F75CA8298FEE0700CDB04C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F75CA7298FEE0700CDB04C /* AppDelegate.swift */; };
 		C3F75CAA298FEE0700CDB04C /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = C3F75CA9298FEE0700CDB04C /* GameScene.sks */; };
 		C3F75CAE298FEE0700CDB04C /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F75CAD298FEE0700CDB04C /* GameScene.swift */; };
@@ -32,6 +34,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C36E157F29A41E24008301BF /* StartScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = StartScene.sks; sourceTree = "<group>"; };
+		C36E158129A41E99008301BF /* StartScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartScene.swift; sourceTree = "<group>"; };
 		C3F75CA4298FEE0700CDB04C /* Asteroids.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Asteroids.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3F75CA7298FEE0700CDB04C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C3F75CA9298FEE0700CDB04C /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -68,6 +72,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C36E157D29A41DBF008301BF /* StartScene */ = {
+			isa = PBXGroup;
+			children = (
+				C36E157F29A41E24008301BF /* StartScene.sks */,
+				C36E158129A41E99008301BF /* StartScene.swift */,
+			);
+			path = StartScene;
+			sourceTree = "<group>";
+		};
+		C36E157E29A41DD1008301BF /* SummaryScene */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = SummaryScene;
+			sourceTree = "<group>";
+		};
 		C3F75C9B298FEE0700CDB04C = {
 			isa = PBXGroup;
 			children = (
@@ -91,6 +111,7 @@
 				C3F75CAF298FEE0700CDB04C /* GameViewController.swift */,
 				C3F75CB1298FEE0700CDB04C /* Main.storyboard */,
 				C3F75CD3298FF2A400CDB04C /* Scenes */,
+				C36E157E29A41DD1008301BF /* SummaryScene */,
 				C3F75CDB29A2B6D900CDB04C /* Helpers */,
 				C3F75CBE298FF28700CDB04C /* Sounds */,
 				C3F75CD6298FF2FF00CDB04C /* Images */,
@@ -119,6 +140,7 @@
 			isa = PBXGroup;
 			children = (
 				C3F75CD5298FF2DC00CDB04C /* LaunchScene */,
+				C36E157D29A41DBF008301BF /* StartScene */,
 				C3F75CD4298FF2B700CDB04C /* GameScene */,
 			);
 			path = Scenes;
@@ -222,6 +244,7 @@
 				C3F75CD0298FF29900CDB04C /* bangLarge.wav in Resources */,
 				C3F75CCF298FF29900CDB04C /* beat1.wav in Resources */,
 				C3F75CCC298FF29900CDB04C /* thrust.wav in Resources */,
+				C36E158029A41E24008301BF /* StartScene.sks in Resources */,
 				C3F75CCA298FF29900CDB04C /* fire.wav in Resources */,
 				C3F75CD2298FF29900CDB04C /* bangSmall.wav in Resources */,
 				C3F75CC9298FF29900CDB04C /* beat2.wav in Resources */,
@@ -250,6 +273,7 @@
 				C3F75CB0298FEE0700CDB04C /* GameViewController.swift in Sources */,
 				C3F75CDF29A2B77600CDB04C /* Player.swift in Sources */,
 				C3F75CA8298FEE0700CDB04C /* AppDelegate.swift in Sources */,
+				C36E158229A41E99008301BF /* StartScene.swift in Sources */,
 				C3F75CDD29A2B6F200CDB04C /* Enumerations.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
