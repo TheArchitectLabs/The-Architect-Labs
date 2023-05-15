@@ -1,17 +1,15 @@
 {
   "images" : [
     {
-      "filename" : "The Architect Labs Logo - 1024 x 1024 - Not Transparent.png",
+      "filename" : "TAL-Logo-Light.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "The Architect Labs Logo - 1024 x 1024 - Not Transparent@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "The Architect Labs Logo - 1024 x 1024 - Not Transparent@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

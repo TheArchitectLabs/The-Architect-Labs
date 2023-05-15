@@ -33,6 +33,7 @@
 		C30BC3D72978B51100F6AD12 /* SummaryScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = C30BC3D62978B51100F6AD12 /* SummaryScene.sks */; };
 		C30BC3DA2978B52D00F6AD12 /* SummaryScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30BC3D92978B52D00F6AD12 /* SummaryScene.swift */; };
 		C30BC3DC297B1D7800F6AD12 /* Enumerations.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30BC3DB297B1D7800F6AD12 /* Enumerations.swift */; };
+		C3953E2A29F54EE700E296E7 /* SpaceDust.sks in Resources */ = {isa = PBXBuildFile; fileRef = C3953E2929F54EE700E296E7 /* SpaceDust.sks */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -63,6 +64,7 @@
 		C30BC3D62978B51100F6AD12 /* SummaryScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = SummaryScene.sks; sourceTree = "<group>"; };
 		C30BC3D92978B52D00F6AD12 /* SummaryScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryScene.swift; sourceTree = "<group>"; };
 		C30BC3DB297B1D7800F6AD12 /* Enumerations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enumerations.swift; sourceTree = "<group>"; };
+		C3953E2929F54EE700E296E7 /* SpaceDust.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = SpaceDust.sks; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,6 +136,7 @@
 				C30BC3922961BF5000F6AD12 /* GameScene.sks */,
 				C30BC3962961BF5000F6AD12 /* GameScene.swift */,
 				C30BC3BA2972DDCD00F6AD12 /* Explosion.sks */,
+				C3953E2929F54EE700E296E7 /* SpaceDust.sks */,
 				C30BC3B22961C31000F6AD12 /* SpaceDust.sks */,
 			);
 			path = "Game Scene";
@@ -223,6 +226,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C3953E2A29F54EE700E296E7 /* SpaceDust.sks in Resources */,
 				C30BC3B32961C31000F6AD12 /* SpaceDust.sks in Resources */,
 				C30BC3AF2961C05000F6AD12 /* InvaderHit.wav in Resources */,
 				C30BC3C629732DFB00F6AD12 /* explosion.wav in Resources */,
